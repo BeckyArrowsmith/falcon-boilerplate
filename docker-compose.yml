@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: gunicorn resources.app:api --config /app/gunicorn.config.py
+    volumes:
+      - .:/usr/src/myapp
+    ports:
+      - "8000:8000"

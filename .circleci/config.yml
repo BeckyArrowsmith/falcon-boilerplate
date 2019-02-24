@@ -1,0 +1,11 @@
+version: 3
+jobs:
+  build:
+    machine: true
+    working_directory: ~/falcon-boilerplate
+    steps:
+        - checkout
+        - run: docker-compose up -d
+        - run: pip install -r myapp/requirements/testing.txt
+        - run: pytest --cov=.
+    
