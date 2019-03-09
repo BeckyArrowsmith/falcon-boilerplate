@@ -1,5 +1,9 @@
 [![CircleCI](https://circleci.com/gh/BeckyArrowsmith/falcon-boilerplate/tree/master.svg?style=svg)](https://circleci.com/gh/BeckyArrowsmith/falcon-boilerplate/tree/master)
 
+[![codecov](https://codecov.io/gh/BeckyArrowsmith/falcon-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/BeckyArrowsmith/falcon-boilerplate)
+
+
+
 # Falcon API Boilerplate
 
 This boilerplate contains Falcon API, running on Docker, with Pytest and code coverage.
