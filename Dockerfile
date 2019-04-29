@@ -1,26 +1,24 @@
-# Build:
-#   $ docker build -t trakkin . 
-#       OPTIONAL: --no-cache
-# Run:
-#   docker run -p 127.0.0.1:8000:8000 trakkin
-FROM python:3.7.2
+# docker build -t falcon-boilerplate .
+# docker run -it -p8000:8000 falcon-boilerplate
 
-LABEL maintainer=”BeckyArrowsmith” version=”0.1.0” maintainer_email=”iam@becky.codes”
+FROM python:3.7.3-alpine
 
-# Environment setting
-ENV APP_ENVIRONMENT staging
-
-COPY ./myapp /myapp
-RUN pip install -r /myapp/requirements/testing.txt
-
-# Gunicorn installation
-RUN pip install gunicorn gevent
-
-# Gunicorn default configuration
-COPY gunicorn.config.py /app/gunicorn.config.py
-
-WORKDIR /myapp
+RUN apk add --no-cache \
+    libev \
+    python py-pip \
+    python-dev build-base \
+&& pip install gevent \
+&& apk del python-dev build-base
 
 EXPOSE 8000
 
-CMD ["gunicorn", "routing:api","--config", "/app/gunicorn.config.py"]
+COPY gunicorn.config.py /app/gunicorn.config.py
+
+# Add demo app
+COPY ./myapp /myapp
+WORKDIR /myapp
+
+RUN pip3 install  -r requirements/base.txt
+RUN pip3 install -r requirements/testing.txt
+
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "resources.app:api", "--config", "/app/gunicorn.config.py", "--reload", "--max-requests=1"]
