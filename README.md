@@ -13,13 +13,19 @@ It's a good idea to replace all instances of `myapp` with your own app name.
 ## Running it
 Building Docker image: `$ docker build -t falcon-boilerplate .` (optional `--no-cache` flag to build it 'clean')
 
-Running Docker image: `$ docker-compose up`
-
-Use the `-d` flag to run in detached mode
-
-To stop the service run `$ docker-compose stop`
+Running Docker image: `$ docker run -it -p8000:8000 falcon-boilerplate`
 
 # Testing
+Make yourself a virtualenv:
+
+`$ virtualenv .venv`
+
+And run it:
+
+`$ source .venv/bin/activate`
+
+& install the requirements
+
 To see a simple chart in your cli:
 `$ pytest --cov=.`
 

@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/falcon-boilerplate
     steps:
         - checkout
-        - run: docker-compose up -d
+        - run: docker build -t falcon-boilerplate .
         - run: pip install -r myapp/requirements/testing.txt
         - run: pytest --cov=.
         - run: codecov
