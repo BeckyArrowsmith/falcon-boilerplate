@@ -16,16 +16,6 @@ Building Docker image: `$ docker build -t falcon-boilerplate .` (optional `--no-
 Running Docker image: `$ docker run -it -p8000:8000 falcon-boilerplate`
 
 # Testing
-Make yourself a virtualenv:
-
-`$ virtualenv .venv`
-
-And run it:
-
-`$ source .venv/bin/activate`
-
-& install the requirements
-
 To see a simple chart in your cli:
 `$ pytest --cov=.`
 
